@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+
+
 class Square:
     """Simple square class with his size as a field"""
 
