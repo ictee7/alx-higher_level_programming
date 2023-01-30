@@ -122,3 +122,25 @@ class Rectangle:
         """Prints string to STDOUT when rectangle object is deleted"""
         type(self).number_of_instances -= 1
         print("Bye rectangle...")
+
+    @staticmethod
+    def bigger_or_equal(rect_1, rect_2):
+        """Returns biggest triangle based on area
+           or rect_1 if both are of the same size.
+        Args:
+            rect_1 (Rectangle): first rectangle.
+            rect_2 (Rectanlge): second rectangle.
+        Raises:
+            TypeError: if neither rect is of instance Rectangle Class.
+        """
+
+        if not isinstance(rect_1, Rectangle):
+            raise TypeError("rect_1 must be an instance of Rectangle")
+        if not isinstance(rect_2, Rectangle):
+            raise TypeError("rect_2 must be an instance of Rectangle")
+        if rect_1.area() > rect_2.area():
+            return rect_1
+        if rect_1.area() < rect_2.area():
+            return rect_2
+        else:
+            return rect_1
