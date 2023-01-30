@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Define rectangle Class
-Task 0 is Empty class
+Task 0 iss Empty class
 """
 
 
