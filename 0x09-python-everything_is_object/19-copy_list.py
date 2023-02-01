@@ -3,4 +3,4 @@
 
 
 def copy_list(las):
-    return list(las)
+    return las.copy()
