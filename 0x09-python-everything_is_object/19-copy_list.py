@@ -1,7 +1,3 @@
 #!/usr/bin/python3
-""" Des """
-
-
-def copy_list(las):
-    """ Des """
-    return las.copy()
+def copy_list(list1):
+    return list1[:]
