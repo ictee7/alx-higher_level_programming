@@ -1,39 +1,34 @@
 #!/usr/bin/python3
-"""Module for matrix_divided method."""
+""" matrix_divided divides the given matrix
+by the parameter "div", and returns the divided matrix
+"""
 
 
 def matrix_divided(matrix, div):
-    """Divides all elemnts of a matrix by div.
-    Args:
-        matrix: list of lists containing int/ floats.
-        div: number to divide matrix by.
-    Returns:
-        List: list of lists containing divided matrix.
-    Raises:
-        TypeError: if matrix is not list of lists nor contains ints/ floats.
-        TypeError: if sublists are not of the same size.
-        TypeError: if div is neither int nor float.
-        ZeroDivisionError: when div is zero.
+    """ Divides all elements of a matrix by "div"
+    checks if the entire list is int/float
+    checks if each list in the matrix are the same size
+    checks if "div" is an int/float or is 0
     """
+    mes0 = "matrix must be a matrix (list of lists) of integers/floats"
+    mes1 = "Each row of the matrix must have the same size"
+    res_matrix = []
+
     if not isinstance(div, (int, float)):
         raise TypeError("div must be a number")
-    if not isinstance(matrix, list) or len(matrix) == 0:
-        raise TypeError("matrix must be a matrix (list of lists) of \
-                        integers/floats.")
 
-    for row in matrix:
-        if not isinstance(row, list) or len(row) == 0:
-            raise TypeError("matrix must be a matrix (list of lists) of \
-                            integers/floats.")
-        if len(row) != len(matrix[0]):
-            raise TypeError("Each row of the matrix must have the same size")
-        for x in row:
-            if not isinstance(x, (int, float)):
-                raise TypeError("matrix must be a matrix (list of lists) of \
-                    integers/floats.")
-    return [[round(x / div, 2) for x in row] for row in matrix]
+    if div == 0:
+        raise ZeroDivisionError("division by zero")
 
+    for lists in matrix:
+        if len(lists) != len(matrix[0]):
+            raise TypeError(mes1)
+        inner_list = []
+        for items in lists:
+            if not isinstance(items, (int, float)):
+                raise TypeError(mes0)
+            else:
+                inner_list.append(round(items / div, 2))
+        res_matrix.append(inner_list)
 
-if __name__ == "__main__":
-    import doctest
-    doctest.testfile("tests/2-matrix_divided.txt")
+    return res_matrix
